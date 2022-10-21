@@ -5,9 +5,10 @@ getAverageSeasons(dataSeries);
 function renderCoursesInTable(series) {
     series.forEach(function (s) {
         var trElement = document.createElement("tr");
-        trElement.innerHTML = "<td>".concat(s.id, "</td>\n                           <td style=\"color: #0051ff;\">").concat(s.name, "</td>\n                           <td>").concat(s.channel, "</td>\n                           <td>").concat(s.season, "</td>");
+        trElement.innerHTML = "<td>".concat(s.id, "</td>\n                           <td style=\"color: #0051ff;\"><a href=\"#\" style=\"text-decoration: none\">").concat(s.name, "</a></td>\n                           <td>").concat(s.channel, "</td>\n                           <td>").concat(s.season, "</td>");
         seriesTbody.appendChild(trElement);
-        trElement.addEventListener('click', function () { return renderCardInfo(s); });
+        // trElement.addEventListener('click', () => renderCardInfo(s));
+        trElement.children[1].children[0].addEventListener('click', function () { return renderCardInfo(s); });
     });
 }
 function getAverageSeasons(series) {

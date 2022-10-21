@@ -10,11 +10,16 @@ function renderCoursesInTable(series: Serie[]): void {
   series.forEach(s => {
     let trElement = document.createElement("tr");
     trElement.innerHTML = `<td>${s.id}</td>
-                           <td style="color: #0051ff;">${s.name}</td>
+                           <td style="color: #0051ff;"><a href="#" style="text-decoration: none">${s.name}</a></td>
                            <td>${s.channel}</td>
                            <td>${s.season}</td>`;
     seriesTbody.appendChild(trElement);
-    trElement.addEventListener('click', () => renderCardInfo(s));
+    
+    // method 1: click row
+    // trElement.addEventListener('click', () => renderCardInfo(s)); 
+
+    // method 2: click name of the serie
+    trElement.children[1].children[0].addEventListener('click', () => renderCardInfo(s));
   });  
 }
 
